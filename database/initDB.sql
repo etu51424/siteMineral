@@ -6,8 +6,6 @@ DROP TABLE IF EXISTS mineral;
 DROP TABLE IF EXISTS order_mineral;
 DROP TABLE IF EXISTS person;
 
-
-
 CREATE TABLE person (
 	-- ptete pas utile ici le not null
 	id INT not null auto_increment primary key,
@@ -39,10 +37,16 @@ CREATE TABLE mineral (
 	id INT not null auto_increment primary key,
     name_fr varchar(255) not null,
     name_en varchar(255) not null,
+    color_fr varchar(255) not null,
+    color_en varchar(255) not null,
+    transparence_fr varchar(255) not null, -- check que c dans une liste
+    transparence_en varchar(255) not null,
+    densite int not null,
     price float not null
 );
 
-CREATE TABLE category (
+-- correspond au type geologique
+CREATE TABLE categorie (
 	-- couleur, transparence, densite (1-6), type geologique
 	id int not null auto_increment primary key,
 	name_fr varchar(255) not null,
