@@ -1,3 +1,4 @@
+-- CREATE DATABASE java_webapp_db;
 USE java_webapp_db;
 
 DROP TABLE IF EXISTS order_detail;
@@ -8,52 +9,58 @@ DROP TABLE IF EXISTS person;
 
 CREATE TABLE person (
 	-- ptete pas utile ici le not null
-	id INT not null auto_increment primary key,
-    last_name varchar(255) not null,
-    first_name varchar(255) not null,
-    address varchar(255) not null,
-    country varchar(255),
-    gender int not null,
-    phone_number int not null,
-    email varchar(255) not null,
-    birth_date int
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    last_name VARCHAR(255) NOT NULL,
+    first_name VARCHAR(255) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(255) NOT NULL,
+    country VARCHAR(255),
+    gender CHAR,
+    birth_date DATE
+    
+    CHECK (birth_date >= '1900-01-01'),
+    CHECK (gender in ('M', 'F', 'X'))
 );
 
 CREATE TABLE order_mineral (
-	id INT not null auto_increment primary key,
-	order_date date
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    person_id INT NOT NULL REFERENCES person(id),
+	order_date DATE,
+    
+    CHECK (order_date >= '2024-01-01')
 );
 
--- command line
--- n'a pas une double clé primaire car chaq nouv commande avce ce command_id est juste un incrémentation à quantity
 CREATE TABLE order_detail (
-	quantity int not null,
-	order_mineral_id varchar(255) references order_mineral(id),
-    mineral_id varchar(255) references mineral(id),
-    PRIMARY KEY pk_order_detail (order_mineral_id, mineral_id)
+	order_mineral_id VARCHAR(255) NOT NULL REFERENCES order_mineral(id),
+    mineral_id VARCHAR(255) NOT NULL REFERENCES mineral(id),
+    quantity INT NOT NULL,
+    PRIMARY KEY pk_order_detail (order_mineral_id, mineral_id),
+    
+    CHECK (quantity >= 1)
+);
+
+CREATE TABLE category (
+	--  type geologique
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	name_fr VARCHAR(255) NOT NULL,
+    name_en VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE mineral (
-	id INT not null auto_increment primary key,
-    name_fr varchar(255) not null,
-    name_en varchar(255) not null,
-    color_fr varchar(255) not null,
-    color_en varchar(255) not null,
-    transparence_fr varchar(255) not null, -- check que c dans une liste
-    transparence_en varchar(255) not null,
-    densite int not null,
-    price float not null
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name_fr VARCHAR(255) NOT NULL,
+    name_en VARCHAR(255) NOT NULL,
+    color_fr VARCHAR(255) NOT NULL,
+    color_en VARCHAR(255) NOT NULL,
+    transparence_fr VARCHAR(255) NOT NULL,
+    transparence_en VARCHAR(255) NOT NULL,
+    densite INT NOT NULL,
+    price FLOAT NOT NULL,
+    category_id INT NOT NULL REFERENCES category(id),
+    
+    CHECK (transparence_fr in ('transparent','semi-transparent','translucide', 'opaque')),
+    CHECK (transparence_en in ('transparent','semi-transparent','translucent','opaque')),
+    CHECK (price >= 0),
+    CHECK (densite >= 1 AND densite <= 10)
 );
-
--- correspond au type geologique
-CREATE TABLE categorie (
-	-- couleur, transparence, densite (1-6), type geologique
-	id int not null auto_increment primary key,
-	name_fr varchar(255) not null,
-    name_en varchar(255) not null
-);
-
-
-    
-    
-    
