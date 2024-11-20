@@ -1,4 +1,9 @@
 server:
-  port:
+  port: 8082
   servlet:
-    contextPath:
+    contextPath: /minerals
+spring:
+  datasource:
+    password: bidondon
+    url: jdbc:mysql://localhost:3306/java_webapp_db?user=root
+    driverClassName: com.mysql.cj.jdbc.Driver
