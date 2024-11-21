@@ -15,12 +15,17 @@
 </head>
 <body>
     <div id="header" class="row">
-        <div class="col d-flex justify-content-start">
+        <div class="col text-center d-flex align-items-center justify-content-center">
             <a href="${localeFr}">
                 <img alt="fr" src='<spring:url value="/images/flag_fr.png"/>' />
             </a>
             <a href="${localeEn}">
                 <img alt="en" src='<spring:url value="/images/flag_en.png"/>' />
+            </a>
+        </div>
+        <div class="col text-center d-flex align-items-center justify-content-center">
+            <a href="<spring:url value='/home' />">
+                <spring:message code="homePage"/>
             </a>
         </div>
         <div class="col text-center d-flex align-items-center justify-content-center">
