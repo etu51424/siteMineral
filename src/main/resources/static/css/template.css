@@ -1,0 +1,50 @@
+/* Reset de base */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Styles généraux */
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+#header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#header div{
+    vertical-align: center;
+}
+
+/* Footer */
+#footer {
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-size: 0.9rem;
+}
+
+#footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
