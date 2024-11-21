@@ -16,6 +16,9 @@
 <body>
     <div id="header" class="row">
         <div class="col text-center d-flex align-items-center justify-content-center">
+            <a href="<spring:url value='/home' />">
+                <spring:message code="homePage"/>
+            </a>
             <a href="${localeFr}">
                 <img alt="fr" src='<spring:url value="/images/flag_fr.png"/>' />
             </a>
@@ -24,12 +27,12 @@
             </a>
         </div>
         <div class="col text-center d-flex align-items-center justify-content-center">
-            <a href="<spring:url value='/home' />">
-                <spring:message code="homePage"/>
-            </a>
+            <spring:message code="welcomeMessage"/>
         </div>
         <div class="col text-center d-flex align-items-center justify-content-center">
-            <spring:message code="welcomeMessage"/>
+            <a href="<spring:url value='/inscription' />">
+                s'inscrire
+            </a>
         </div>
     </div>
 
