@@ -16,15 +16,19 @@
 <body>
     <div id="header" class="row">
         <div class="col text-center d-flex align-items-center justify-content-center">
-            <a href="<spring:url value='/home' />">
-                <spring:message code="homePage"/>
-            </a>
-            <a href="${localeFr}">
-                <img alt="fr" src='<spring:url value="/images/flag_fr.png"/>' />
-            </a>
-            <a href="${localeEn}">
-                <img alt="en" src='<spring:url value="/images/flag_en.png"/>' />
-            </a>
+            <div class="col text-center d-flex align-items-center justify-content-center">
+                <a href="<spring:url value='/home' />">
+                    <spring:message code="homePage"/>
+                </a>
+            </div>
+            <div class="col text-center d-flex align-items-center justify-content-center">
+                <a href="${localeFr}">
+                    <img alt="fr" src='<spring:url value="/images/flag_fr.png"/>' />
+                </a>
+                <a href="${localeEn}">
+                    <img alt="en" src='<spring:url value="/images/flag_en.png"/>' />
+                </a>
+            </div>
         </div>
         <div class="col text-center d-flex align-items-center justify-content-center">
             <spring:message code="welcomeMessage"/>
@@ -36,14 +40,16 @@
         </div>
     </div>
 
-    <div>
+    <div class="row">
       <tiles:insertAttribute name="main-content"/>
     </div>
 
-    <div id="footer">
-        <a href="<spring:url value='/html/informations.html' />">
-            <spring:message code="companyInfos"/>
-        </a>
+    <div id="footer" class="row">
+        <div class="col text-center d-flex align-items-center justify-content-center">
+            <a href="<spring:url value='/html/informations.html' />">
+                <spring:message code="companyInfos"/>
+            </a>
+        </div>
     </div>
 </body>
 </html>
