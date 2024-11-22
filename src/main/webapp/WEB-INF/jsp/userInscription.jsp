@@ -14,31 +14,37 @@
             modelAttribute="User">
             <p>
                 <form:label path="username">
-                    <spring:message code="userName"/>
+                    <spring:message code="userName"/>*
                 </form:label>
                 <form:input path="username" required="true"/>
             </p>
             <p>
                 <form:label path="first_name">
-                    <spring:message code="firstName"/>
+                    <spring:message code="firstName"/>*
                 </form:label>
                 <form:input path="first_name" required="true"/>
             </p>
             <p>
                 <form:label path="last_name">
-                    <spring:message code="lastName"/>
+                    <spring:message code="lastName"/>*
                 </form:label>
                 <form:input path="last_name" required="true"/>
             </p>
             <p>
                 <form:label path="address">
-                    <spring:message code="address"/>
+                    <spring:message code="address"/>*
                 </form:label>
                 <form:input path="address" required="true"/>
             </p>
             <p>
+                <form:label path="email">
+                    <spring:message code="email"/>*
+                </form:label>
+                <form:input type="email" path="email" required="true"/>
+            </p>
+            <p>
                 <form:label path="phone_number">
-                    <spring:message code="phoneNumber"/>
+                    <spring:message code="phoneNumber"/>*
                 </form:label>
                 <form:input path="phone_number" required="true"/>
             </p>
@@ -47,9 +53,15 @@
                     <spring:message code="gender"/>
                 </form:label>
                 <form:select path="gender">
-                    <form:option value="M">Homme</form:option>
-                    <form:option value="F">Femme</form:option>
-                    <form:option value="X">Autre</form:option>
+                    <form:option value="M">
+                        <spring:message code="genderM"/>
+                    </form:option>
+                    <form:option value="F">
+                        <spring:message code="genderF"/>
+                    </form:option>
+                    <form:option value="X">
+                        <spring:message code="genderX"/>
+                    </form:option>
                 </form:select>
             </p>
             <p>
@@ -60,7 +72,7 @@
             </p>
             <p>
                 <form:label path="password">
-                    <spring:message code="password"/>
+                    <spring:message code="password"/>*
                 </form:label>
                 <form:input path="password" required="true"/>
             </p>
@@ -68,6 +80,7 @@
                 <form:button>
                     <spring:message code="submitButton"/>
                 </form:button>
+                <span style="color: red"><spring:message code="requiredInfoMessage"/></span>
             </p>
         </form:form>
     </div>
