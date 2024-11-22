@@ -5,7 +5,8 @@
     <title>Inscription</title>
 </head>
 <body>
-    <div class="col d-flex align-items-center justify-content-center">
+    <div class="col d-flex flex-column align-items-center justify-content-center">
+        <h2><spring:message code="userFormTitle"/></h2>
         <form:form
             id="userForm"
             method="post"
