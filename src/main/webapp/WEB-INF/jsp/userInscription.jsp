@@ -3,37 +3,48 @@
 <html>
 <head>
     <title>Inscription</title>
-    <link rel="stylesheet" type="text/css" href=href="<spring:url value='/css/userInscription.css' />">
 </head>
 <body>
-    <div class="col text-center d-flex align-items-center justify-content-center">
+    <div class="col d-flex align-items-center justify-content-center">
         <form:form
             id="userForm"
             method="post"
             action="/mineral/inscription/send"
             modelAttribute="User">
             <p>
-                <form:label path="username">Nom d'utilisateur </form:label>
-                <form:input path="username"/>
+                <form:label path="username">
+                    <spring:message code="userName"/>
+                </form:label>
+                <form:input path="username" required="true"/>
             </p>
             <p>
-                <form:label path="first_name">Prénom </form:label>
-                <form:input path="first_name"/>
+                <form:label path="first_name">
+                    <spring:message code="firstName"/>
+                </form:label>
+                <form:input path="first_name" required="true"/>
             </p>
             <p>
-                <form:label path="last_name">Nom </form:label>
-                <form:input path="last_name"/>
+                <form:label path="last_name">
+                    <spring:message code="lastName"/>
+                </form:label>
+                <form:input path="last_name" required="true"/>
             </p>
             <p>
-                <form:label path="address">adresse </form:label>
-                <form:input path="address"/>
+                <form:label path="address">
+                    <spring:message code="address"/>
+                </form:label>
+                <form:input path="address" required="true"/>
             </p>
             <p>
-                <form:label path="phone_number">Numéro de téléphone </form:label>
-                <form:input path="phone_number"/>
+                <form:label path="phone_number">
+                    <spring:message code="phoneNumber"/>
+                </form:label>
+                <form:input path="phone_number" required="true"/>
             </p>
             <p>
-                <form:label path="gender">Sexe </form:label>
+                <form:label path="gender">
+                    <spring:message code="gender"/>
+                </form:label>
                 <form:select path="gender">
                     <form:option value="M">Homme</form:option>
                     <form:option value="F">Femme</form:option>
@@ -41,15 +52,21 @@
                 </form:select>
             </p>
             <p>
-                <form:label path="birth_date">Date de naissance </form:label>
-                <form:input path="birth_date"/>
+                <form:label path="birth_date">
+                    <spring:message code="birthDate"/>
+                </form:label>
+                <form:input path="birth_date" type="date" min="1900-01-01" max="${todayDate}" />
             </p>
             <p>
-                <form:label path="password">Mot de passe </form:label>
-                <form:input path="password"/>
+                <form:label path="password">
+                    <spring:message code="password"/>
+                </form:label>
+                <form:input path="password" required="true"/>
             </p>
             <p>
-                <form:button>Submit</form:button>
+                <form:button>
+                    <spring:message code="submitButton"/>
+                </form:button>
             </p>
         </form:form>
     </div>

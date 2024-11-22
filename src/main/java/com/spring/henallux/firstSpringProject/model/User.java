@@ -2,6 +2,7 @@ package com.spring.henallux.firstSpringProject.model;
 
 
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class User {
@@ -18,7 +19,7 @@ public class User {
     @NotNull
     private String phone_number;
     private char gender;
-    private Date birth_date;
+    private LocalDate birth_date;
     @NotNull
     private String password;
 
@@ -54,7 +55,7 @@ public class User {
         return gender;
     }
 
-    public Date getBirth_date() {
+    public LocalDate getBirth_date() {
         return birth_date;
     }
     public String getPassword() {
@@ -89,7 +90,7 @@ public class User {
         this.gender = gender;
     }
 
-    public void setBirth_date(Date birth_date) {
+    public void setBirth_date(LocalDate birth_date) {
         this.birth_date = birth_date;
     }
 

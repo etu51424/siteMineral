@@ -13,8 +13,8 @@
         <spring:param name="locale" value="en"/>
     </spring:url>
 </head>
-<body>
-    <div id="header" class="row">
+<body class="d-flex flex-column min-vh-100">
+    <div id="header" class="row align-items-start">
         <div class="col text-center d-flex align-items-center justify-content-center">
             <div class="col text-center d-flex align-items-center justify-content-center">
                 <a href="<spring:url value='/home' />">
@@ -40,11 +40,11 @@
         </div>
     </div>
 
-    <div class="row">
+    <div id="content" class="row flex-fill">
       <tiles:insertAttribute name="main-content"/>
     </div>
 
-    <div id="footer" class="row">
+    <div id="footer" class="row align-items-end">
         <div class="col text-center d-flex align-items-center justify-content-center">
             <a href="<spring:url value='/html/informations.html' />">
                 <spring:message code="companyInfos"/>
