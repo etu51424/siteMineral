@@ -3,6 +3,7 @@ package com.spring.henallux.firstSpringProject.dataAccess.util;
 import com.spring.henallux.firstSpringProject.dataAccess.entity.UserEntity;
 import com.spring.henallux.firstSpringProject.model.User;
 import org.dozer.DozerBeanMapper;
+import org.springframework.boot.web.embedded.undertow.UndertowServletWebServer;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,13 +18,16 @@ public class ProviderConverter {
         User user = dozerBeanMapper.map(userEntity, User.class);
         user.setAccountNonExpired(userEntity.getAccountNonExpired());
         user.setAuthorities(userEntity.getAuthorities());
-        user.setAccountNnonLocked(userEntity.getAccountNonLocked());
+        user.setAccountNonLocked(userEntity.getAccountNonLocked());
         user.setEnabled(userEntity.getEnabled());
         user.setCredentialsNonExpired(userEntity.getCredentialsNonExpired());
         return user;
     }
-    public UserEntity userModelToUserEntity (User useModel){
-        return dozerBeanMapper.map(useModel, UserEntity.class);
+    public UserEntity userModelToUserEntity (User userModel){
+        UserEntity user = new UserEntity();
+        user.setBirthDate(userModel.getBirthDate());
+        dozerBeanMapper.map(userModel, user);
+        return user;
     }
 
     public void setDozerBeanMapper(DozerBeanMapper dozerBeanMapper) {

@@ -1,6 +1,7 @@
 package com.spring.henallux.firstSpringProject.model;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,22 +18,23 @@ public class User implements UserDetails {
     @NotNull
     private String username;
     @NotNull
-    private String last_name;
+    private String lastName;
     @NotNull
-    private String first_name;
+    private String firstName;
     @NotNull
     private String address;
     @NotNull
     private String email;
     @NotNull
-    private String phone_number;
+    private String phoneNumber;
     private char gender;
-    private LocalDate birth_date;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
+    private LocalDate birthDate;
     @NotNull
     private String password;
     private String authorities;
     private boolean accountNonExpired;
-    private boolean accountNnonLocked;
+    private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
 
@@ -44,12 +46,12 @@ public class User implements UserDetails {
         return username;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getAddress() {
@@ -60,16 +62,16 @@ public class User implements UserDetails {
         return email;
     }
 
-    public String getPhone_number() {
-        return phone_number;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public char getGender() {
         return gender;
     }
 
-    public LocalDate getBirth_date() {
-        return birth_date;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
     @Override
     public String getPassword() {
@@ -92,7 +94,7 @@ public class User implements UserDetails {
         return accountNonExpired;
     }
     public boolean getAccountNonLocked(){
-        return accountNnonLocked;
+        return accountNonLocked;
     }
     public boolean getCredentialsNonExpired(){
         return credentialsNonExpired;
@@ -102,7 +104,7 @@ public class User implements UserDetails {
     }
     @Override
     public boolean isAccountNonLocked() {
-        return accountNnonLocked;
+        return accountNonLocked;
     }
     public boolean isEnabled() {
         return enabled;
@@ -119,12 +121,12 @@ public class User implements UserDetails {
         this.username = username;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public void setAddress(String address) {
@@ -135,16 +137,16 @@ public class User implements UserDetails {
         this.email = email;
     }
 
-    public void setPhone_number(String phone_number) {
-        this.phone_number = phone_number;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public void setGender(char gender) {
         this.gender = gender;
     }
 
-    public void setBirth_date(LocalDate birth_date) {
-        this.birth_date = birth_date;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public void setPassword(String password) {
@@ -155,8 +157,8 @@ public class User implements UserDetails {
         this.accountNonExpired = accountNonExpired;
     }
 
-    public void setAccountNnonLocked(boolean accountNnonLocked) {
-        this.accountNnonLocked = accountNnonLocked;
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
     }
 
     public void setCredentialsNonExpired(boolean credentialsNonExpired) {

@@ -5,6 +5,7 @@ import com.spring.henallux.firstSpringProject.dataAccess.repository.UserReposito
 import com.spring.henallux.firstSpringProject.dataAccess.util.ProviderConverter;
 import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -18,6 +19,16 @@ public class UserDAO implements UserDataAccess {
     public UserDAO(UserRepository userRepository, ProviderConverter providerConverter){
         this.userRepository = userRepository;
         this.providerConverter = providerConverter;
+    }
+    public User saveUser(User user){
+        try {
+            UserEntity userEntity = providerConverter.userModelToUserEntity(user);
+            userEntity.setPassword(new BCryptPasswordEncoder().encode(userEntity.getPassword()));
+            userRepository.save(userEntity);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return user;
     }
     public User findByUsername(String username){
         UserEntity userEntity = userRepository.findByUsername(username);

@@ -9,7 +9,7 @@
         <h2><spring:message code="userFormTitle"/></h2>
         <form:form
             id="userForm"
-            method="post"
+            method="POST"
             action="/mineral/inscription/send"
             modelAttribute="User">
             <p>
@@ -19,16 +19,16 @@
                 <form:input path="username" required="true"/>
             </p>
             <p>
-                <form:label path="first_name">
+                <form:label path="firstName">
                     <spring:message code="firstName"/>*
                 </form:label>
-                <form:input path="first_name" required="true"/>
+                <form:input path="firstName" required="true"/>
             </p>
             <p>
-                <form:label path="last_name">
+                <form:label path="lastName">
                     <spring:message code="lastName"/>*
                 </form:label>
-                <form:input path="last_name" required="true"/>
+                <form:input path="lastName" required="true"/>
             </p>
             <p>
                 <form:label path="address">
@@ -43,10 +43,10 @@
                 <form:input type="email" path="email" required="true"/>
             </p>
             <p>
-                <form:label path="phone_number">
+                <form:label path="phoneNumber">
                     <spring:message code="phoneNumber"/>*
                 </form:label>
-                <form:input path="phone_number" required="true"/>
+                <form:input path="phoneNumber" required="true"/>
             </p>
             <p>
                 <form:label path="gender">
@@ -65,10 +65,10 @@
                 </form:select>
             </p>
             <p>
-                <form:label path="birth_date">
+                <form:label path="birthDate">
                     <spring:message code="birthDate"/>
                 </form:label>
-                <form:input path="birth_date" type="date" min="1900-01-01" max="${todayDate}" />
+                <form:input path="birthDate" type="date" min="1900-01-01" max="${todayDate}" />
             </p>
             <p>
                 <form:label path="password">
