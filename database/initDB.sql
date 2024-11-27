@@ -1,4 +1,6 @@
 -- CREATE DATABASE java_webapp_db;
+set @@global.time_zone  = '+00:00' ; 
+set @@session.time_zone = '+00:00' ;
 USE java_webapp_db;
 
 DROP TABLE IF EXISTS order_detail;
@@ -77,3 +79,9 @@ CREATE TABLE mineral (
     CHECK (price >= 0),
     CHECK (densite >= 1 AND densite <= 10)
 );
+
+INSERT INTO person (username,last_name,first_name,address,email,phone_number,password,authorities,non_expired,non_locked,credentials_non_expired,enabled) 
+VALUES ('jean', 'jean', 'michel', '1 rue du rocher', 'rocher.cailloux@rock.be', '0123456789', '$2a$10$mZvOb3kqbxrbL7FbGS30pe3H/Bu9QkAQtgwsohAdHKc55a8frs7li', 'ROLE_USER', 1 , 1, 1, 1),
+('admin', 'admin', 'admin', '1 rue du rocher', 'rocher.cailloux@rock.be', '0123456789', '$2a$10$mZvOb3kqbxrbL7FbGS30pe3H/Bu9QkAQtgwsohAdHKc55a8frs7li', 'ROLE_ADMIN', 1 , 1, 1, 1);
+
+select * from person;
