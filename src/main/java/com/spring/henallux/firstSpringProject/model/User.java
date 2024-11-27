@@ -1,11 +1,19 @@
 package com.spring.henallux.firstSpringProject.model;
 
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
-public class User {
+public class User implements UserDetails {
     @NotNull
     private String username;
     @NotNull
@@ -22,6 +30,11 @@ public class User {
     private LocalDate birth_date;
     @NotNull
     private String password;
+    private String authorities;
+    private boolean accountNonExpired;
+    private boolean accountNnonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
 
     public User(){
 
@@ -58,8 +71,48 @@ public class User {
     public LocalDate getBirth_date() {
         return birth_date;
     }
+    @Override
     public String getPassword() {
         return password;
+    }
+
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> grandedAuthorities = new ArrayList<>();
+        if (authorities != null && !authorities.isEmpty()){
+            String[] authoritiesArray = authorities.split(",");
+            for (String authority : authoritiesArray){
+                if (authority != null && !authority.isEmpty()){
+                    grandedAuthorities.add(new SimpleGrantedAuthority(authority));
+                }
+            }
+        }
+        return grandedAuthorities;
+    }
+    public boolean getAccountNonExpired(){
+        return accountNonExpired;
+    }
+    public boolean getAccountNonLocked(){
+        return accountNnonLocked;
+    }
+    public boolean getCredentialsNonExpired(){
+        return credentialsNonExpired;
+    }
+    public boolean getEnabled(){
+        return enabled;
+    }
+    @Override
+    public boolean isAccountNonLocked() {
+        return accountNnonLocked;
+    }
+    public boolean isEnabled() {
+        return enabled;
+    }
+    public boolean isCredentialsNonExpired() {
+        return credentialsNonExpired;
+    }
+    @Override
+    public boolean isAccountNonExpired() {
+        return accountNonExpired;
     }
 
     public void setUsername(String username) {
@@ -96,5 +149,25 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNnonLocked(boolean accountNnonLocked) {
+        this.accountNnonLocked = accountNnonLocked;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public void setAuthorities(String authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

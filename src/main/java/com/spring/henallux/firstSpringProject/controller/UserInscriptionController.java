@@ -1,6 +1,9 @@
 package com.spring.henallux.firstSpringProject.controller;
 
+import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDAO;
+import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.firstSpringProject.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
