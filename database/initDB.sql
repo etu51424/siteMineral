@@ -2,6 +2,8 @@
 USE java_webapp_db;
 
 DROP TABLE IF EXISTS order_detail;
+DROP TABLE IF EXISTS category_translation;
+DROP TABLE IF EXISTS language;
 DROP TABLE IF EXISTS category;
 DROP TABLE IF EXISTS mineral;
 DROP TABLE IF EXISTS order_mineral;
@@ -18,7 +20,7 @@ CREATE TABLE person (
     gender CHAR,
     birth_date DATE,
     password VARCHAR(255) NOT NULL,
-    authorities VARCHAR(25) NOT NULL DEFAULt 'ROLE_USER',
+    authorities VARCHAR(25) DEFAULt NULL,
     non_expired BOOL DEFAULT NULL,
     non_locked BOOL DEFAULT NULL,
     credentials_non_expired BOOL DEFAULT NULL,
@@ -34,7 +36,7 @@ CREATE TABLE order_mineral (
         person_id INT NOT NULL REFERENCES person(id),
 	order_date DATE,
 	is_paid BOOL NOT NULL DEFAULT false,
-    
+
     CHECK (order_date >= '2024-01-01')
 );
 
@@ -43,31 +45,35 @@ CREATE TABLE order_detail (
     mineral_id VARCHAR(255) NOT NULL REFERENCES mineral(id),
     quantity INT NOT NULL,
     PRIMARY KEY pk_order_detail (order_mineral_id, mineral_id),
-    
+
     CHECK (quantity >= 1)
+);
+
+CREATE TABLE language(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    label VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE category (
 	--  type geologique
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name_fr VARCHAR(255) NOT NULL,
-    name_en VARCHAR(255) NOT NULL
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
+);
+
+CREATE TABLE category_translation(
+	language_id INT NOT NULL REFERENCES language(id),
+    category_id INT NOT NULL REFERENCES category(id),
+    category_name VARCHAR(255),
+    CONSTRAINT pk_category_translation PRIMARY KEY (language_id, category_id)
 );
 
 CREATE TABLE mineral (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name_fr VARCHAR(255) NOT NULL,
-    name_en VARCHAR(255) NOT NULL,
-    color_fr VARCHAR(255) NOT NULL,
-    color_en VARCHAR(255) NOT NULL,
-    transparence_fr VARCHAR(255) NOT NULL,
-    transparence_en VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
     densite INT NOT NULL,
     price FLOAT NOT NULL,
     category_id INT NOT NULL REFERENCES category(id),
-    
-    CHECK (transparence_fr in ('transparent','semi-transparent','translucide', 'opaque')),
-    CHECK (transparence_en in ('transparent','semi-transparent','translucent','opaque')),
+    imagePath VARCHAR(255),
+
     CHECK (price >= 0),
     CHECK (densite >= 1 AND densite <= 10)
 );
