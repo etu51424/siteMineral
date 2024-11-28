@@ -126,3 +126,59 @@ INSERT INTO category_translation(language_id, category_id, category_name) VALUES
 (2, 11, 'Nitrates'),
 (1, 12, 'Minéraux organiques'),
 (2, 12, 'Organic minerals');
+
+INSERT INTO mineral (name, densite, price, category_id, imagePath) VALUES
+-- Éléments natifs
+('Or', 10, 500.00, 1, 'images/or.jpg'),
+('Argent', 10, 450.00, 1, 'images/argent.jpg'),
+('Cuivre', 9, 50.00, 1, 'images/cuivre.jpg'),
+('Soufre', 2, 5.00, 1, 'images/soufre.jpg'),
+-- Sulfures
+('Galène', 7, 20.00, 2, 'images/galene.jpg'),
+('Blende', 4, 15.00, 2, 'images/blende.jpg'),
+('Chalcopyrite', 6, 18.00, 2, 'images/chalcopyrite.jpg'),
+('Cinnabar', 9, 25.00, 2, 'images/cinnabar.jpg'),
+-- Oxydes
+('Hématite', 5, 10.00, 3, 'images/hematite.jpg'),
+('Magnétite', 7, 12.50, 3, 'images/magnetite.jpg'),
+('Corindon', 9, 150.00, 3, 'images/corindon.jpg'),
+('Spinelle', 8, 200.00, 3, 'images/spinelle.jpg'),
+-- Halogénures
+('Sylvine', 2, 4.00, 4, 'images/sylvine.jpg'),
+('Cryolite', 3, 8.00, 4, 'images/cryolite.jpg'),
+('Fluorine', 4, 15.00, 4, 'images/fluorine.jpg'),
+('Halite', 2, 2.00, 4, 'images/halite.jpg'),
+-- Carbonates
+('Calcite', 3, 6.00, 5, 'images/calcite.jpg'),
+('Dolomite', 4, 5.00, 5, 'images/dolomite.jpg'),
+('Malachite', 5, 20.00, 5, 'images/malachite.jpg'),
+('Azurite', 6, 25.00, 5, 'images/azurite.jpg'),
+-- Sulfates
+('Barytine', 7, 10.00, 6, 'images/barytine.jpg'),
+('Anhydrite', 6, 8.00, 6, 'images/anhydrite.jpg'),
+('Gypsum', 2, 4.50, 6, 'images/gypsum.jpg'),
+('Célestine', 8, 12.00, 6, 'images/celestine.jpg'),
+-- Phosphates
+('Apatite', 4, 10.00, 7, 'images/apatite.jpg'),
+('Monazite', 7, 25.00, 7, 'images/monazite.jpg'),
+('Turquoise', 8, 80.00, 7, 'images/turquoise.jpg'),
+('Variscite', 6, 50.00, 7, 'images/variscite.jpg'),
+-- Silicates
+('Quartz', 3, 5.00, 8, 'images/quartz.jpg'),
+('Feldspath', 4, 7.00, 8, 'images/feldspath.jpg'),
+('Topaze', 8, 50.00, 8, 'images/topaze.jpg'),
+('Garnet', 9, 75.00, 8, 'images/garnet.jpg'),
+-- Borates
+('Borax', 2, 3.00, 9, 'images/borax.jpg'),
+('Ulexite', 3, 6.00, 9, 'images/ulexite.jpg'),
+('Colemanite', 4, 10.00, 9, 'images/colemanite.jpg'),
+-- Hydroxides
+('Goethite', 6, 10.00, 10, 'images/goethite.jpg'),
+('Limonite', 4, 8.00, 10, 'images/limonite.jpg'),
+('Diaspore', 7, 15.00, 10, 'images/diaspore.jpg'),
+-- Nitrates
+('Nitratine', 2, 5.00, 11, 'images/nitratine.jpg'),
+('Nitrocalcite', 3, 7.00, 11, 'images/nitrocalcite.jpg'),
+-- Minéraux organiques
+('Ambre', 1, 20.00, 12, 'images/ambre.jpg'),
+('Jais', 1, 30.00, 12, 'images/jais.jpg');
