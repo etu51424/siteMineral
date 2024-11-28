@@ -29,8 +29,7 @@ CREATE TABLE person (
     enabled BOOL DEFAULT NULL,
 
     CHECK (birth_date >= '1900-01-01'),
-    CHECK (gender in ('M', 'F', 'X')),
-    CHECK (authorities in ('ROLE_USER', 'ROLE_ADMIN'))
+    CHECK (gender in ('M', 'F', 'X', null))
 );
 
 CREATE TABLE order_mineral (
@@ -84,4 +83,46 @@ INSERT INTO person (username,last_name,first_name,address,email,phone_number,pas
 VALUES ('jean', 'jean', 'michel', '1 rue du rocher', 'rocher.cailloux@rock.be', '0123456789', '$2a$10$mZvOb3kqbxrbL7FbGS30pe3H/Bu9QkAQtgwsohAdHKc55a8frs7li', 'ROLE_USER', 1 , 1, 1, 1),
 ('admin', 'admin', 'admin', '1 rue du rocher', 'rocher.cailloux@rock.be', '0123456789', '$2a$10$mZvOb3kqbxrbL7FbGS30pe3H/Bu9QkAQtgwsohAdHKc55a8frs7li', 'ROLE_ADMIN', 1 , 1, 1, 1);
 
-select * from person;
+INSERT INTO language(label) VALUES 
+('Francais'),
+('English');
+
+INSERT INTO category() VALUES 
+(),
+(),
+(),
+(),
+(),
+(),
+(),
+(),
+(),
+(),
+(),
+();
+
+INSERT INTO category_translation(language_id, category_id, category_name) VALUES 
+(1, 1, 'Éléments natifs'),
+(2, 1, 'Native elements'),
+(1, 2, 'Sulfides'),
+(2, 2, 'Sulphides'),
+(1, 3, 'Oxides'),
+(2, 3, 'Oxides'),
+(1, 4, 'Halides'),
+(2, 4, 'Halides'),
+(1, 5, 'Carbonates'),
+(2, 5, 'Carbonates'),
+(1, 6, 'Sulfates'),
+(2, 6, 'Sulfates'),
+(1, 7, 'Phosphates'),
+(2, 7, 'Phosphates'),
+(1, 8, 'Silicates'),
+(2, 8, 'Silicates'),
+(1, 9, 'Borates'),
+(2, 9, 'Borates'),
+(1, 10, 'Hydroxides'),
+(2, 10, 'Hydroxides'),
+(1, 11, 'Nitrates'),
+(2, 11, 'Nitrates'),
+(1, 12, 'Minéraux organiques'),
+(2, 12, 'Organic minerals');
