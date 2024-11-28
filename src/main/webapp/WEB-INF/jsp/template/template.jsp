@@ -31,13 +31,31 @@
             </div>
         </div>
         <div class="col text-center d-flex align-items-center justify-content-center">
-            <spring:message code="welcomeMessage"/>
+            <div class="col text-center d-flex align-items-center justify-content-center">
+                <p><spring:message code="welcomeMessage"/></p>
+            </div>
         </div>
         <div class="col text-center d-flex align-items-center justify-content-center">
-            <a href="<spring:url value='/inscription' />">
-                s'inscrire
-            </a>
+            <sec:authorize access="!isAuthenticated()">
+                <div>
+                    <a href="<spring:url value='/inscription' />">
+                        s'inscrire
+                    </a>
+                </div>
+                <div>
+                    <a href="<spring:url value='/login' />">
+                        se connecter
+                    </a>
+                </div>
+
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <a href="<spring:url value='/logout' />">
+                    se déconnecter
+                </a>
+            </sec:authorize>
         </div>
+
     </div>
 
     <div id="content" class="row flex-fill">

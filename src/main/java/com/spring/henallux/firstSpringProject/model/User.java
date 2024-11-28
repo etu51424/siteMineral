@@ -30,7 +30,7 @@ public class User implements UserDetails {
     private Character gender;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate birthDate;
-    @NotNull @Min(value = 4)
+    @NotNull
     private String password;
     private String authorities;
     private boolean accountNonExpired;
@@ -171,5 +171,10 @@ public class User implements UserDetails {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    @Override
+    public String toString() {
+        return getPassword();
     }
 }

@@ -13,7 +13,7 @@
     </h2>
     <div class="row">
     <form:form class="col d-flex flex-column align-items-center justify-content-center"
-        id="userForm"
+        id="currentUser"
         method="POST"
         action="/mineral/inscription/send"
         modelAttribute="User">

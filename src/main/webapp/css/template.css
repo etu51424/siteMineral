@@ -22,6 +22,7 @@ body, html {
     text-align: center;
     font-size: 1.5rem;
     font-weight: bold;
+    vertical-align: center;
 }
 
 #header a {
@@ -29,6 +30,7 @@ body, html {
     text-decoration: none;
     font-weight: bold;
 }
+
 /* Footer */
 #footer {
     background-color: #222;
@@ -55,5 +57,9 @@ img {
     border: solid black 1px;
     display: flex;
     flex: 1; /* Le contenu prend l'espace restant */
+}
+
+div{
+    padding: 5px;
 }
 

@@ -1,5 +1,7 @@
 package com.spring.henallux.firstSpringProject.controller;
 
+import com.spring.henallux.firstSpringProject.configuration.Constants;
+import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
