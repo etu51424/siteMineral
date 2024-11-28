@@ -34,10 +34,15 @@ public class UserInscriptionController {
     public String getFormData(Model model,
                               @Valid @ModelAttribute(value = "User") User user,
                               final BindingResult errors){
+        if (!userDAO.isUsernameTaken(user.getUsername())){
+            errors.rejectValue("username", "error.user");
+            return "integrated:userInscription";
+        }
         if (!errors.hasErrors()){
             userDAO.saveUser(user);
             return "redirect:/home";
-        } else{
+        }
+        else{
             System.out.println(errors);
             return "integrated:userInscription";
         }

@@ -6,12 +6,12 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.Column;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 public class User implements UserDetails {
@@ -27,10 +27,10 @@ public class User implements UserDetails {
     private String email;
     @NotNull
     private String phoneNumber;
-    private char gender;
+    private Character gender;
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate birthDate;
-    @NotNull
+    @NotNull @Min(value = 4)
     private String password;
     private String authorities;
     private boolean accountNonExpired;
@@ -66,7 +66,7 @@ public class User implements UserDetails {
         return phoneNumber;
     }
 
-    public char getGender() {
+    public Character getGender() {
         return gender;
     }
 
@@ -141,7 +141,7 @@ public class User implements UserDetails {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setGender(char gender) {
+    public void setGender(Character gender) {
         this.gender = gender;
     }
 

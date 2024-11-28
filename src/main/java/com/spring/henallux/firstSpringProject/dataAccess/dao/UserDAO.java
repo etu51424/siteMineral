@@ -35,4 +35,9 @@ public class UserDAO implements UserDataAccess {
         User userModel = providerConverter.userEntityToUserModel(userEntity);
         return userModel;
     }
+
+    public boolean isUsernameTaken(String username){
+        UserEntity userEntity = userRepository.findByUsername(username);
+        return userEntity == null;
+    }
 }

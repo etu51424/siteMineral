@@ -25,7 +25,7 @@ public class UserEntity {
     @Column(name="phone_number")
     private String phoneNumber;
     @Column(name="gender")
-    private char gender;
+    private Character gender;
     @Column(name="birth_date")
     private LocalDate birthDate;
     @Column(name="password")
@@ -73,7 +73,7 @@ public class UserEntity {
         return phoneNumber;
     }
 
-    public char getGender() {
+    public Character getGender() {
         return gender;
     }
 
@@ -129,7 +129,7 @@ public class UserEntity {
         this.phoneNumber = phoneNumber;
     }
 
-    public void setGender(char gender) {
+    public void setGender(Character gender) {
         this.gender = gender;
     }
 
