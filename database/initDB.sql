@@ -34,18 +34,20 @@ CREATE TABLE person (
 
 CREATE TABLE order_mineral (
 	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        person_id INT NOT NULL REFERENCES person(id),
+	person_id INT NOT NULL REFERENCES person(id),
 	order_date DATE,
+    real_price FLOAT,
 	is_paid BOOL NOT NULL DEFAULT false,
 
     CHECK (order_date >= '2024-01-01')
 );
 
 CREATE TABLE order_detail (
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     order_mineral_id VARCHAR(255) NOT NULL REFERENCES order_mineral(id),
     mineral_id VARCHAR(255) NOT NULL REFERENCES mineral(id),
     quantity INT NOT NULL,
-    PRIMARY KEY pk_order_detail (order_mineral_id, mineral_id),
+    CONSTRAINT unique_order_detail UNIQUE (order_mineral_id, mineral_id),
 
     CHECK (quantity >= 1)
 );
@@ -61,10 +63,11 @@ CREATE TABLE category (
 );
 
 CREATE TABLE category_translation(
+	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	language_id INT NOT NULL REFERENCES language(id),
     category_id INT NOT NULL REFERENCES category(id),
     category_name VARCHAR(255),
-    CONSTRAINT pk_category_translation PRIMARY KEY (language_id, category_id)
+    CONSTRAINT unique_category_translation UNIQUE (language_id, category_id)
 );
 
 CREATE TABLE mineral (
