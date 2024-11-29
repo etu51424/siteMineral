@@ -87,7 +87,7 @@
             <form:label path="password">
                 <spring:message code="password"/>*
             </form:label>
-            <form:input path="password" required="true"/>
+            <form:input path="password" type="password" required="true"/>
             <span class="error">
                 <form:errors path="password">
                     <spring:message code="passwordLenghtError"/>

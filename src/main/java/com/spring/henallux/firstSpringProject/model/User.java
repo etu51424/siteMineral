@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,6 +32,7 @@ public class User implements UserDetails {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate birthDate;
     @NotNull
+    @Size(min = 4)
     private String password;
     private String authorities;
     private boolean accountNonExpired;

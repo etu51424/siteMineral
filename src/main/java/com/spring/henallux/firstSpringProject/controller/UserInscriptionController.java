@@ -46,7 +46,7 @@ public class UserInscriptionController {
         }
         if (!errors.hasErrors()){
             userDAO.saveUser(user);
-            return "redirect:/home";
+            return "redirect:/login";
         }
         else{
             System.out.println(errors);

@@ -24,6 +24,11 @@ public class UserDAO implements UserDataAccess {
         try {
             UserEntity userEntity = providerConverter.userModelToUserEntity(user);
             userEntity.setPassword(new BCryptPasswordEncoder().encode(userEntity.getPassword()));
+            userEntity.setAuthorities("ROLE_USER");
+            userEntity.setAccountNonExpired(true);
+            userEntity.setEnabled(true);
+            userEntity.setAccountNonLocked(true);
+            userEntity.setCredentialsNonExpired(true);
             userRepository.save(userEntity);
         } catch (Exception e){
             System.out.println(e.getMessage());

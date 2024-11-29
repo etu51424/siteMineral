@@ -21,21 +21,14 @@
                 <form:label path="username">
                     <spring:message code="userName"/>
                 </form:label>
-                <form:input path="username"/>
+                <form:input path="username" required="true"/>
             </p>
             <p>
                 <form:label path="password">
                     <spring:message code="password"/>
                 </form:label>
-                <form:input path="password"/>
+                <form:input type="password" path="password" required="true"/>
             </p>
-
-            <span class="error">
-                <form:errors path="*">
-                    <spring:message code="loginError"/>
-                </form:errors>
-            </span>
-
             <form:button>
                 <spring:message code="submitButton"/>
             </form:button>
