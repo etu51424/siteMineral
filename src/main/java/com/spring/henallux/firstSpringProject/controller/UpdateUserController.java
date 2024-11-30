@@ -38,6 +38,8 @@ public class UpdateUserController {
                               final BindingResult errors){
         if (!errors.hasErrors()){
             User userDetails = (User) authentication.getPrincipal();
+            User updatedUser = getUpdatedUser(user, userDetails);
+            userDAO.updateUser(updatedUser);
             return "redirect:/home";
         }
         else{
@@ -46,7 +48,7 @@ public class UpdateUserController {
         }
     }
 
-    public UserDetails getUpdatedUser(User user, User userDetails){
+    public User getUpdatedUser(User user, User userDetails){
         if (!user.getFirstName().isEmpty()){
             userDetails.setFirstName(user.getFirstName());
         }

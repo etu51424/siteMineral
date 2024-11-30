@@ -45,4 +45,15 @@ public class UserDAO implements UserDataAccess {
         UserEntity userEntity = userRepository.findByUsername(username);
         return userEntity == null;
     }
+
+    public User updateUser(User user){
+        /*
+        UserEntity updatedUserEntity = providerConverter.userModelToUserEntity(user);
+        if (!providerConverter.isBCryptHash(updatedUserEntity.getPassword())){
+            updatedUserEntity.setPassword(new BCryptPasswordEncoder().encode(updatedUserEntity.getPassword()));
+        }
+        userRepository.updateUser(updatedUserEntity);
+        */
+        return user;
+    }
 }

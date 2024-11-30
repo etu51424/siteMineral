@@ -30,6 +30,11 @@ public class ProviderConverter {
         return user;
     }
 
+    public boolean isBCryptHash(String hash) {
+        // Vérifie si la chaîne correspond au format général de BCrypt
+        return hash != null && hash.matches("^\\$2[aby]?\\$\\d{2}\\$[./A-Za-z0-9]{53}$");
+    }
+
     public void setDozerBeanMapper(DozerBeanMapper dozerBeanMapper) {
         this.dozerBeanMapper = dozerBeanMapper;
     }
