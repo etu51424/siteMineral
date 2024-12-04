@@ -31,7 +31,7 @@ public class UpdateUserController {
         model.addAttribute("todayDate", LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         return "integrated:updateUser";
     }
-    @RequestMapping(value = "/send", method = RequestMethod.PATCH)
+    @RequestMapping(value = "/send", method = RequestMethod.POST)
     public String getFormData(Model model,
                               @ModelAttribute(value="User") User user,
                               Authentication authentication,

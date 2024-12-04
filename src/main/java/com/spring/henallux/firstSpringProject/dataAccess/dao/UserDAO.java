@@ -35,6 +35,21 @@ public class UserDAO implements UserDataAccess {
         }
         return user;
     }
+
+    public User updateUser(User user){
+        try {
+            UserEntity userEntity = providerConverter.userModelToUserEntity(user);
+
+            if (!providerConverter.isBCryptHash(userEntity.getPassword())) {
+                userEntity.setPassword(new BCryptPasswordEncoder().encode(userEntity.getPassword()));
+            }
+
+            userRepository.save(userEntity);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return user;
+    }
     public User findByUsername(String username){
         UserEntity userEntity = userRepository.findByUsername(username);
         User userModel = providerConverter.userEntityToUserModel(userEntity);
@@ -44,16 +59,5 @@ public class UserDAO implements UserDataAccess {
     public boolean isUsernameTaken(String username){
         UserEntity userEntity = userRepository.findByUsername(username);
         return userEntity == null;
-    }
-
-    public User updateUser(User user){
-        /*
-        UserEntity updatedUserEntity = providerConverter.userModelToUserEntity(user);
-        if (!providerConverter.isBCryptHash(updatedUserEntity.getPassword())){
-            updatedUserEntity.setPassword(new BCryptPasswordEncoder().encode(updatedUserEntity.getPassword()));
-        }
-        userRepository.updateUser(updatedUserEntity);
-        */
-        return user;
     }
 }

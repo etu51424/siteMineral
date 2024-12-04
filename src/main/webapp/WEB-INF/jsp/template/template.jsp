@@ -23,39 +23,42 @@
             </div>
             <div class="col text-center d-flex align-items-center justify-content-center">
                 <a href="${localeFr}">
-                    <img alt="fr" src='<spring:url value="/images/flag_fr.png"/>' />
+                    <img alt="fr" src='<spring:url value="/images/utils/flag_fr.png"/>' />
                 </a>
                 <a href="${localeEn}">
-                    <img alt="en" src='<spring:url value="/images/flag_en.png"/>' />
+                    <img alt="en" src='<spring:url value="/images/utils/flag_en.png"/>' />
                 </a>
             </div>
         </div>
         <div class="col text-center d-flex align-items-center justify-content-center">
             <div class="col text-center d-flex align-items-center justify-content-center">
-                <p><spring:message code="welcomeMessage"/></p>
+                <p><spring:message code="welcomeMessage"/> <sec:authorize access="isAuthenticated()">${pageContext.request.userPrincipal.principal.username}</sec:authorize> </p>
             </div>
         </div>
-        <div class="col text-center d-flex align-items-center justify-content-center">
-            <sec:authorize access="!isAuthenticated()">
-                <div>
-                    <a href="<spring:url value='/inscription' />">
-                        s'inscrire
-                    </a>
-                </div>
-                <div>
-                    <a href="<spring:url value='/login' />">
-                        se connecter
-                    </a>
-                </div>
+        <sec:authorize access="!isAuthenticated()">
+            <div class="col text-center d-flex align-items-center justify-content-center">
 
-            </sec:authorize>
-            <sec:authorize access="isAuthenticated()">
+                    <div class="col text-center d-flex align-items-center justify-content-center">
+                        <a href="<spring:url value='/inscription' />">
+                            <img alt="<spring:message code='createAccount'/>" src='<spring:url value="/images/utils/createAccount.png"/>' />
+                        </a>
+                    </div>
+                    <div class="col text-center d-flex align-items-center justify-content-center">
+                        <a href="<spring:url value='/login' />">
+                            <img alt="<spring:message code='logIn'/>" src='<spring:url value="/images/utils/login.png"/>' />
+                        </a>
+                    </div>
+
+
+            </div>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+            <div class="col text-center d-flex align-items-center justify-content-center">
                 <a href="<spring:url value='/logout' />">
-                    se déconnecter
+                    <img alt="<spring:message code='logOut'/>" src='<spring:url value="/images/utils/logout.png"/>' />
                 </a>
-            </sec:authorize>
-        </div>
-
+            </div>
+        </sec:authorize>
     </div>
 
     <div id="content" class="row flex-fill">

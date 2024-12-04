@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.List;
 
 public class User implements UserDetails {
+    private int id;
     @NotNull
     private String username;
     @NotNull
@@ -104,6 +105,11 @@ public class User implements UserDetails {
     public boolean getEnabled(){
         return enabled;
     }
+
+    public int getId() {
+        return id;
+    }
+
     @Override
     public boolean isAccountNonLocked() {
         return accountNonLocked;
@@ -173,6 +179,10 @@ public class User implements UserDetails {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
