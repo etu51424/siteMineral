@@ -54,9 +54,16 @@
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <div class="col text-center d-flex align-items-center justify-content-center">
-                <a href="<spring:url value='/logout' />">
-                    <img alt="<spring:message code='logOut'/>" src='<spring:url value="/images/utils/logout.png"/>' />
-                </a>
+                <div class="col text-center d-flex align-items-center justify-content-center">
+                    <a href="<spring:url value='/logout' />">
+                        <img alt="<spring:message code='logOut'/>" src='<spring:url value="/images/utils/logout.png"/>' />
+                    </a>
+                </div>
+                <div class="col text-center d-flex align-items-center justify-content-center">
+                    <a href="<spring:url value='/update' />">
+                        <img alt="<spring:message code='logIn'/>" src='<spring:url value="/images/utils/update.png"/>' />
+                    </a>
+                </div>
             </div>
         </sec:authorize>
     </div>

@@ -1,10 +1,17 @@
 package com.spring.henallux.firstSpringProject.dataAccess.util;
 
+import com.spring.henallux.firstSpringProject.dataAccess.entity.CategoryEntity;
+import com.spring.henallux.firstSpringProject.dataAccess.entity.CategoryTranslationEntity;
 import com.spring.henallux.firstSpringProject.dataAccess.entity.UserEntity;
+import com.spring.henallux.firstSpringProject.model.Category;
 import com.spring.henallux.firstSpringProject.model.User;
 import org.dozer.DozerBeanMapper;
 import org.springframework.boot.web.embedded.undertow.UndertowServletWebServer;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Component
 public class ProviderConverter {
@@ -30,9 +37,14 @@ public class ProviderConverter {
         return user;
     }
 
-    public boolean isBCryptHash(String hash) {
-        // Vérifie si la chaîne correspond au format général de BCrypt
-        return hash != null && hash.matches("^\\$2[aby]?\\$\\d{2}\\$[./A-Za-z0-9]{53}$");
+    public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
+        Category category = new Category();
+        Collection<CategoryTranslationEntity> translations = categoryEntity.getCategoryTranslations();
+        for (CategoryTranslationEntity categoryTranslationEntity : translations){
+            category.getCategoryTranslations().put(categoryTranslationEntity.getLanguageId().getId(), categoryTranslationEntity.getCategoryName());
+            category.setId(categoryEntity.getId());
+        }
+        return category;
     }
 
     public void setDozerBeanMapper(DozerBeanMapper dozerBeanMapper) {

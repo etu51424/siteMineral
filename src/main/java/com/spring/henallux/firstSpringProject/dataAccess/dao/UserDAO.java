@@ -4,6 +4,7 @@ import com.spring.henallux.firstSpringProject.dataAccess.entity.UserEntity;
 import com.spring.henallux.firstSpringProject.dataAccess.repository.UserRepository;
 import com.spring.henallux.firstSpringProject.dataAccess.util.ProviderConverter;
 import com.spring.henallux.firstSpringProject.model.User;
+import com.spring.henallux.firstSpringProject.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,7 +41,7 @@ public class UserDAO implements UserDataAccess {
         try {
             UserEntity userEntity = providerConverter.userModelToUserEntity(user);
 
-            if (!providerConverter.isBCryptHash(userEntity.getPassword())) {
+            if (!Utils.isBCryptHash(userEntity.getPassword())) {
                 userEntity.setPassword(new BCryptPasswordEncoder().encode(userEntity.getPassword()));
             }
 
