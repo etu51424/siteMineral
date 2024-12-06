@@ -1,5 +1,5 @@
 /* Style pour les lignes */
-#content .row {
+#content a {
     width: 60%;
     background-color: #fff;
     padding: 10px;
@@ -11,7 +11,7 @@
 }
 
 /* Effectuer un léger survol des lignes */
-#content .row:hover {
+#content a:hover {
     background-color: #f9f9f9;
     cursor: pointer;
 }

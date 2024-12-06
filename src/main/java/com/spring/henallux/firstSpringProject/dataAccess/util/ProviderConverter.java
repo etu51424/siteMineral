@@ -2,8 +2,10 @@ package com.spring.henallux.firstSpringProject.dataAccess.util;
 
 import com.spring.henallux.firstSpringProject.dataAccess.entity.CategoryEntity;
 import com.spring.henallux.firstSpringProject.dataAccess.entity.CategoryTranslationEntity;
+import com.spring.henallux.firstSpringProject.dataAccess.entity.MineralEntity;
 import com.spring.henallux.firstSpringProject.dataAccess.entity.UserEntity;
 import com.spring.henallux.firstSpringProject.model.Category;
+import com.spring.henallux.firstSpringProject.model.Mineral;
 import com.spring.henallux.firstSpringProject.model.User;
 import org.dozer.DozerBeanMapper;
 import org.springframework.boot.web.embedded.undertow.UndertowServletWebServer;
@@ -45,6 +47,13 @@ public class ProviderConverter {
             category.setId(categoryEntity.getId());
         }
         return category;
+    }
+
+    public Mineral mineralEntityToMineralModel(MineralEntity mineralEntity){
+        Mineral mineral = new Mineral();
+        mineral.setCategoryId(mineralEntity.getCategory().getId());
+        dozerBeanMapper.map(mineralEntity, mineral);
+        return mineral;
     }
 
     public void setDozerBeanMapper(DozerBeanMapper dozerBeanMapper) {

@@ -9,19 +9,22 @@
 </head>
 <body>
     <div class="col d-flex flex-column align-items-center justify-content-center">
-        <%
-            // Définir une liste en Java
-            ArrayList<Category> items = (ArrayList<Category>) request.getAttribute("Categories");
-
-            // Parcourir la liste avec une boucle for
-            for (Category item : items) {
-        %>
-        <div class="row d-flex flex-column align-items-center justify-content-center">
-            <%=  pageContext.getRequest().getLocale().getLanguage().equals("fr") ? item.getCategoryTranslations().get(1) : item.getCategoryTranslations().get(2) %>
-        </div>
-        <%
-            } // Fin de la boucle
-        %>
+        <c:forEach var="item" items="${Categories}">
+            <a href="<spring:url value='/articles/${item.id}' />">
+                <div class="row d-flex flex-column align-items-center justify-content-center">
+                    <p>
+                        <c:choose>
+                            <c:when test="${pageContext.request.locale.language == 'fr'}">
+                                ${item.getTranslation(1)}
+                            </c:when>
+                            <c:otherwise>
+                                ${item.getTranslation(2)}
+                            </c:otherwise>
+                        </c:choose>
+                    </p>
+                </div>
+            </a>
+        </c:forEach>
     </div>
 </body>
 </html>

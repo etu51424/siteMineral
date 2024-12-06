@@ -14,6 +14,12 @@ public class CategoryEntity {
     private int id;
     @OneToMany(mappedBy = "categoryId", fetch = FetchType.LAZY)
     private Collection<CategoryTranslationEntity> categoryTranslations;
+    public CategoryEntity(int id){
+        this.id = id;
+    }
+    public CategoryEntity(){
+
+    }
 
     public int getId() {
         return id;

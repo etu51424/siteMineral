@@ -19,6 +19,9 @@ public class Category {
     public HashMap<Integer, String> getCategoryTranslations() {
         return categoryTranslations;
     }
+    public String getTranslation(int key){
+        return categoryTranslations.get(key);
+    }
 
     public void setId(int id) {
         this.id = id;

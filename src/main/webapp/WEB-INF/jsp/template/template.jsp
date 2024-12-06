@@ -34,6 +34,11 @@
             <div class="col text-center d-flex align-items-center justify-content-center">
                 <p><spring:message code="welcomeMessage"/> <sec:authorize access="isAuthenticated()">${pageContext.request.userPrincipal.principal.username}</sec:authorize> !</p>
             </div>
+            <div class="col text-center d-flex align-items-center justify-content-center">
+                <a href="<spring:url value='/catalog' />">
+                    <spring:message code="catalogAccess"/>
+                </a>
+            </div>
         </div>
         <sec:authorize access="!isAuthenticated()">
             <div class="col text-center d-flex align-items-center justify-content-center">
@@ -48,8 +53,6 @@
                             <img alt="<spring:message code='logIn'/>" src='<spring:url value="/images/utils/login.png"/>' />
                         </a>
                     </div>
-
-
             </div>
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
