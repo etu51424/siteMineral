@@ -73,13 +73,13 @@ CREATE TABLE category_translation(
 CREATE TABLE mineral (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
-    densite INT NOT NULL,
+    density INT NOT NULL,
     price FLOAT NOT NULL,
     category_id INT NOT NULL REFERENCES category(id),
-    imagePath VARCHAR(255),
+    image_path VARCHAR(255),
 
     CHECK (price >= 0),
-    CHECK (densite >= 1 AND densite <= 10)
+    CHECK (density >= 1 AND density <= 10)
 );
 
 INSERT INTO person (username,last_name,first_name,address,email,phone_number,password,authorities,non_expired,non_locked,credentials_non_expired,enabled) 
@@ -130,7 +130,7 @@ INSERT INTO category_translation(language_id, category_id, category_name) VALUES
 (1, 12, 'Minéraux organiques'),
 (2, 12, 'Organic minerals');
 
-INSERT INTO mineral (name, densite, price, category_id, imagePath) VALUES
+INSERT INTO mineral (name, density, price, category_id, image_path) VALUES
 -- Éléments natifs
 ('Or', 10, 500.00, 1, 'images/or.jpg'),
 ('Argent', 10, 450.00, 1, 'images/argent.jpg'),
