@@ -1,0 +1,27 @@
+/* Style pour les lignes */
+#content .row {
+    width: 60%;
+    background-color: #fff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    color: #333;
+}
+
+/* Effectuer un léger survol des lignes */
+#content .row:hover {
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Style pour les titres de la page */
+#content h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Optionnel : ajouter une bordure à la page pour une meilleure lisibilité */
+

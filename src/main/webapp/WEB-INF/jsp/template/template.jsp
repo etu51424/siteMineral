@@ -32,7 +32,7 @@
         </div>
         <div class="col text-center d-flex align-items-center justify-content-center">
             <div class="col text-center d-flex align-items-center justify-content-center">
-                <p><spring:message code="welcomeMessage"/> <sec:authorize access="isAuthenticated()">${pageContext.request.userPrincipal.principal.username}</sec:authorize> </p>
+                <p><spring:message code="welcomeMessage"/> <sec:authorize access="isAuthenticated()">${pageContext.request.userPrincipal.principal.username}</sec:authorize> !</p>
             </div>
         </div>
         <sec:authorize access="!isAuthenticated()">
