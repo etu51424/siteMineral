@@ -20,10 +20,28 @@
             <div class="col d-flex flex-column align-items-center justify-content-center">
                 <c:forEach var="item" items="${minerals}">
                     <div class="row d-flex flex-column align-items-center justify-content-center">
-                            <img alt="${item.imagePath}" src='<spring:url value="${item.imagePath}"/>' />
-                        <p><spring:message code="name"/> : ${item.name}</p>
-                        <p><spring:message code="density"/> : ${item.density}</p>
-                        <p><spring:message code="price"/> : ${item.price}</p>
+                            <img alt="${item.imagePath}" src='<spring:url value="/images/minerals/${item.imagePath}"/>' />
+                        <p><span class="bold"><spring:message code="name"/> :</span> ${item.name}</p>
+                        <p><span class="bold"><spring:message code="density"/> :</span>
+                            <c:choose>
+                                <c:when test="${item.density <= 2}">
+                                    <spring:message code="DensityLight"/>
+                                </c:when>
+                                <c:when test="${item.density <= 4}">
+                                    <spring:message code="DensityMediumHeavy"/>
+                                </c:when>
+                                <c:when test="${item.density <= 6}">
+                                    <spring:message code="DensityHeavy"/>
+                                </c:when>
+                                <c:when test="${item.density <= 10}">
+                                    <spring:message code="DensityVeryHeavy"/>
+                                </c:when>
+                                <c:otherwise>
+                                    ${item.density}
+                                </c:otherwise>
+                            </c:choose>
+                        </p>
+                        <p><span class="bold"><spring:message code="price"/> :</span> ${item.price} € / kg</p>
                     </div>
                 </c:forEach>
             </div>

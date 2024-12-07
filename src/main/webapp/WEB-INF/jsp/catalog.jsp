@@ -12,7 +12,7 @@
         <c:forEach var="item" items="${Categories}">
             <a href="<spring:url value='/articles/${item.id}' />">
                 <div class="row d-flex flex-column align-items-center justify-content-center">
-                    <p>
+                    <p class="col d-flex flex-column align-items-center justify-content-center">
                         <c:choose>
                             <c:when test="${pageContext.request.locale.language == 'fr'}">
                                 ${item.getTranslation(1)}

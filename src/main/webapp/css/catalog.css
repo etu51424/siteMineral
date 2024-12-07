@@ -1,6 +1,6 @@
 /* Style pour les lignes */
 #content a {
-    width: 60%;
+    width: 40%;
     background-color: #fff;
     padding: 10px;
     margin-bottom: 10px;
@@ -8,6 +8,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-size: 16px;
     color: #333;
+    text-decoration: none;
 }
 
 /* Effectuer un léger survol des lignes */
