@@ -28,6 +28,7 @@ public class ArticlesController {
                                  @PathVariable("categoryId") int categoryId) {
         model.addAttribute("categoryId", categoryId);
         ArrayList<Mineral> minerals = mineralDAO.getAllByCategoryId(categoryId);
+        model.addAttribute("minerals", minerals);
         return "integrated:articles";
     }
     // Méthode si aucune categoryId fournie

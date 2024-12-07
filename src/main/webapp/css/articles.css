@@ -1,0 +1,68 @@
+/* Conteneur principal */
+#content .col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Style pour les rangées */
+#content .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* Style pour les liens */
+#content a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+#content a:hover {
+    color: #0056b3;
+}
+
+/* Images */
+#content img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Texte sous les images */
+#content p {
+    font-size: 16px;
+    color: #333;
+    margin: 5px 0;
+}
+
+/* Style pour les cartes des éléments */
+#content .row.d-flex {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    text-align: center;
+    width: 300px; /* Largeur des cartes */
+}
+
+/* Texte des cartes */
+#content .row.d-flex p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Effet au survol des cartes */
+.row.d-flex:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

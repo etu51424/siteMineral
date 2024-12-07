@@ -23,6 +23,7 @@ body, html {
     font-size: 1.5rem;
     font-weight: bold;
     vertical-align: center;
+    text-decoration: none;
 }
 
 #header a {
