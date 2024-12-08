@@ -42,6 +42,9 @@
                             </c:choose>
                         </p>
                         <p><span class="bold"><spring:message code="price"/> :</span> ${item.price} € / kg</p>
+                        <div class="panierButton">
+                            <p><spring:message code="cartButton"/></p>
+                        </div>
                     </div>
                 </c:forEach>
             </div>

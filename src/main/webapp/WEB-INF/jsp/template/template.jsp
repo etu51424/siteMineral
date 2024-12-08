@@ -22,6 +22,11 @@
                 </a>
             </div>
             <div class="col text-center d-flex align-items-center justify-content-center">
+                <a href="<spring:url value='/cart' />">
+                    <img alt="<spring:message code='logOut'/>" src='<spring:url value="/images/utils/logout.png"/>' />
+                </a>
+            </div>
+            <div class="col text-center d-flex align-items-center justify-content-center">
                 <a href="${localeFr}">
                     <img alt="fr" src='<spring:url value="/images/utils/flag_fr.png"/>' />
                 </a>
