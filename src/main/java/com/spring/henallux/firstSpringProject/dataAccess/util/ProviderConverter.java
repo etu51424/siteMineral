@@ -39,13 +39,10 @@ public class ProviderConverter {
         return user;
     }
 
-    public Category categoryEntityToCategoryModel(CategoryEntity categoryEntity){
+    public Category categoryTranslationEntityToCategoryModel(CategoryTranslationEntity categoryEntity){
         Category category = new Category();
-        Collection<CategoryTranslationEntity> translations = categoryEntity.getCategoryTranslations();
-        for (CategoryTranslationEntity categoryTranslationEntity : translations){
-            category.getCategoryTranslations().put(categoryTranslationEntity.getLanguageId().getId(), categoryTranslationEntity.getCategoryName());
-            category.setId(categoryEntity.getId());
-        }
+        category.setId(categoryEntity.getId());
+        category.setName(categoryEntity.getCategoryName());
         return category;
     }
 

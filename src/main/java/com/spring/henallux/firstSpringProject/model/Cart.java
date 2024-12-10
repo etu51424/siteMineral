@@ -10,7 +10,6 @@ public class Cart {
         this.content = new HashMap<>();
     }
 
-
     public HashMap<Mineral, Integer> getContent() {
         return content;
     }

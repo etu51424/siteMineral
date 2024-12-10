@@ -23,7 +23,7 @@
             </div>
             <div class="col text-center d-flex align-items-center justify-content-center">
                 <a href="<spring:url value='/cart' />">
-                    <img alt="<spring:message code='logOut'/>" src='<spring:url value="/images/utils/logout.png"/>' />
+                    <img alt="<spring:message code='cartTemplateButton'/>" src='<spring:url value="/images/utils/cart.png"/>' />
                 </a>
             </div>
             <div class="col text-center d-flex align-items-center justify-content-center">

@@ -22,7 +22,7 @@ public class CategoryDAO implements CategoryDataAccess {
 
     public ArrayList<Category> getAllCategories(){
         ArrayList<Category> categories = new ArrayList<>();
-
+        /*
         try{
             Collection<CategoryEntity> categoryEntities = categoryRepository.findAll();
             for (CategoryEntity categoryEntity : categoryEntities){
@@ -32,6 +32,8 @@ public class CategoryDAO implements CategoryDataAccess {
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
+
+         */
         return categories;
     }
 }

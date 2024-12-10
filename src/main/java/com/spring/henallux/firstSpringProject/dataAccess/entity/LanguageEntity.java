@@ -15,6 +15,12 @@ public class LanguageEntity {
     private String label;
     @OneToMany(mappedBy = "languageId")
     private Collection<CategoryTranslationEntity> categoryTranslations;
+    public LanguageEntity(int id){
+        this.id = id;
+    }
+    public LanguageEntity(){
+
+    }
 
     public int getId() {
         return id;

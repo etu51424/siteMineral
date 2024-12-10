@@ -7,29 +7,26 @@ import java.util.HashMap;
 
 public class Category {
     private int id;
-    private HashMap<Integer, String> categoryTranslations;
+    private String name;
+
     public Category(){
-        this.categoryTranslations = new HashMap<>();
     }
 
     public int getId() {
         return id;
     }
 
-    public HashMap<Integer, String> getCategoryTranslations() {
-        return categoryTranslations;
+    public String getName() {
+        return name;
     }
-    public String getTranslation(int key){
-        return categoryTranslations.get(key);
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public void setCategoryTranslations(HashMap<Integer, String> categoryTranslations) {
-        this.categoryTranslations = categoryTranslations;
+    public void setName(String name) {
+        this.name = name;
     }
+
     public String toString() {
         return id + "";
     }
