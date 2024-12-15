@@ -1,20 +1,9 @@
 package com.spring.henallux.firstSpringProject.controller;
 
-import com.spring.henallux.firstSpringProject.configuration.Constants;
-import com.spring.henallux.firstSpringProject.dataAccess.dao.CategoryDAO;
-import com.spring.henallux.firstSpringProject.dataAccess.dao.CategoryDataAccess;
-import com.spring.henallux.firstSpringProject.model.Cart;
-import com.spring.henallux.firstSpringProject.model.Category;
-import com.spring.henallux.firstSpringProject.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import java.util.ArrayList;
 
 @Controller
 @RequestMapping(value = "/home")

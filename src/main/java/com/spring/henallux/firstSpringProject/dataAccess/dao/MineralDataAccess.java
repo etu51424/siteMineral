@@ -6,4 +6,5 @@ import java.util.ArrayList;
 
 public interface MineralDataAccess {
     public ArrayList<Mineral> getAllByCategoryId(int categoryId);
+    public Mineral getMineralById(int mineralId);
 }

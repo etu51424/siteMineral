@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MineralDAO implements MineralDataAccess{
@@ -36,5 +37,19 @@ public class MineralDAO implements MineralDataAccess{
             System.out.println(e.getMessage());
         }
         return minerals;
+    }
+    public Mineral getMineralById(int mineralId){
+        Mineral mineral = new Mineral();
+        try{
+            Optional<MineralEntity> optionalMineralEntity = mineralRepository.findById(mineralId);
+
+            if (optionalMineralEntity.isPresent()){
+                MineralEntity mineralEntity = optionalMineralEntity.get();
+                mineral = providerConverter.mineralEntityToMineralModel(mineralEntity);
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        return mineral;
     }
 }

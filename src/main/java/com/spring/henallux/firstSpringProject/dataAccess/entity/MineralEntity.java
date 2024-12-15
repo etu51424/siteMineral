@@ -22,6 +22,14 @@ public class MineralEntity {
     @Column(name="image_path")
     private String imagePath;
 
+    public MineralEntity(int id){
+        this.id = id;
+    }
+
+    public MineralEntity(){
+
+    }
+
     public int getId() {
         return id;
     }
