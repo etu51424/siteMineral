@@ -2,6 +2,8 @@ package com.spring.henallux.firstSpringProject.dataAccess.entity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Collection;
+
 @Entity
 @Table(name="order_mineral")
 public class OrderMineralEntity {
@@ -37,6 +39,7 @@ public class OrderMineralEntity {
     public boolean getIsPaid(){
         return isPaid;
     }
+
 
     public void setId(int id) {
         this.id = id;

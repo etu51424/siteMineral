@@ -4,6 +4,7 @@ import com.spring.henallux.firstSpringProject.configuration.Constants;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.firstSpringProject.model.User;
+import com.spring.henallux.firstSpringProject.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,6 +45,7 @@ public class UserInscriptionController {
             errors.rejectValue("username", "error.user");
             return "integrated:userInscription";
         }
+        Utils.verifyPasswordConfirmation(user.getPassword(), user.getPasswordConfirmation(), errors);
         if (!errors.hasErrors()){
             userDAO.saveUser(user);
             return "redirect:/login";

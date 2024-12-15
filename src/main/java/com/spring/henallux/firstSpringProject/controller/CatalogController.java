@@ -4,6 +4,7 @@ import com.spring.henallux.firstSpringProject.dataAccess.dao.CategoryDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.CategoryDataAccess;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.CategoryTranslationDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.CategoryTranslationDataAccess;
+import com.spring.henallux.firstSpringProject.model.Category;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +26,7 @@ public class CatalogController {
     @RequestMapping(method = RequestMethod.GET)
     public String catalog(Model model,
                           Locale locale){
+
         model.addAttribute("Categories", categoryTranslationDAO.getAllCategoryByLanguage(locale.toString()));
         return "integrated:catalog";
     }

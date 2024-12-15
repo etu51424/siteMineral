@@ -16,6 +16,15 @@ public class OrderDetailEntity {
     @ManyToOne
     private MineralEntity mineralId;
     private int quantity;
+    public OrderDetailEntity(OrderMineralEntity orderMineralEntity, MineralEntity mineralEntity, int quantity){
+        this.orderMineralId = orderMineralEntity;
+        this.mineralId = mineralEntity;
+        this.quantity = quantity;
+    }
+
+    public OrderDetailEntity(){
+
+    }
 
     public int getId() {
         return id;

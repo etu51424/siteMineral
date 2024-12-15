@@ -42,9 +42,42 @@
                             </c:choose>
                         </p>
                         <p><span class="bold"><spring:message code="price"/> :</span> ${item.price} € / kg</p>
-                        <div class="panierButton">
-                            <p><spring:message code="cartButton"/></p>
-                        </div>
+                        <p>
+                            <c:choose>
+                                <c:when test="${cart.isInCart(item)}">
+                                    <form action="<spring:url value='/articles/add'/>" method="post" style="display:inline;">
+                                        <input type="hidden" name="itemId" value="${item.id}" />
+                                        <input type="hidden" name="itemName" value="${item.name}" />
+                                        <input type="hidden" name="itemDensity" value="${item.density}" />
+                                        <input type="hidden" name="itemPrice" value="${item.price}" />
+                                        <input type="hidden" name="itemCategoryId" value="${item.categoryId}" />
+                                        <input type="hidden" name="itemImagePath" value="${item.imagePath}" />
+                                        <button type="submit" class="panierButton">+</button>
+                                    </form>
+                                    ${cart.getValueById(item.id)}
+                                    <form action="<spring:url value='/articles/sub'/>" method="post" style="display:inline;">
+                                        <input type="hidden" name="itemId" value="${item.id}" />
+                                        <input type="hidden" name="itemName" value="${item.name}" />
+                                        <input type="hidden" name="itemDensity" value="${item.density}" />
+                                        <input type="hidden" name="itemPrice" value="${item.price}" />
+                                        <input type="hidden" name="itemCategoryId" value="${item.categoryId}" />
+                                        <input type="hidden" name="itemImagePath" value="${item.imagePath}" />
+                                        <button type="submit" class="panierButton">-</button>
+                                    </form>
+                                </c:when>
+                                <c:otherwise>
+                                    <form action="<spring:url value='/articles/add'/>" method="post" style="display:inline;">
+                                        <input type="hidden" name="itemId" value="${item.id}" />
+                                        <input type="hidden" name="itemName" value="${item.name}" />
+                                        <input type="hidden" name="itemDensity" value="${item.density}" />
+                                        <input type="hidden" name="itemPrice" value="${item.price}" />
+                                        <input type="hidden" name="itemCategoryId" value="${item.categoryId}" />
+                                        <input type="hidden" name="itemImagePath" value="${item.imagePath}" />
+                                        <button type="submit" class="panierButton"><spring:message code="cartButton"/></button>
+                                    </form>
+                                </c:otherwise>
+                            </c:choose>
+                        </p>
                     </div>
                 </c:forEach>
             </div>

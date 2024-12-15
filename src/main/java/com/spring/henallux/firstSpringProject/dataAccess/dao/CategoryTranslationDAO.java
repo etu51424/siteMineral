@@ -35,11 +35,10 @@ public class CategoryTranslationDAO implements CategoryTranslationDataAccess{
             default:
                 languageId = 1;
         }
-        System.out.println(languageId);
         Collection<CategoryTranslationEntity> categoryTranslationEntities = categoryTranslationRepository.findAllByLanguageId(new LanguageEntity(languageId));
 
         ArrayList<Category> categories = new ArrayList<>();
-        for (CategoryTranslationEntity categoryEntity : categoryTranslationEntities){
+        for (CategoryTranslationEntity categoryEntity : categoryTranslationEntities){;
             categories.add(providerConverter.categoryTranslationEntityToCategoryModel(categoryEntity));
         }
         return categories;

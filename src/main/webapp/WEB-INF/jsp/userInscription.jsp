@@ -95,6 +95,18 @@
             </span>
         </p>
         <p>
+            <form:label path="passwordConfirmation">
+                <spring:message code="passwordConfirmation"/>
+            </form:label>
+            <form:input path="passwordConfirmation"/>
+
+            <span class="error">
+                <form:errors path="passwordConfirmation">
+                    <spring:message code="passwordConfirmationError"/>
+                </form:errors>
+        </span>
+        </p>
+        <p>
             <form:button>
                 <spring:message code="submitButton"/>
             </form:button>

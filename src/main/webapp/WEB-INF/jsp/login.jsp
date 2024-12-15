@@ -35,6 +35,11 @@
 
         </form:form>
     </div>
+    <div class="row">
+        <a href="<spring:url value='/inscription' />">
+            <p>Créer un compte</p>
+        </a>
+    </div>
 </div>
 </body>
 </html>

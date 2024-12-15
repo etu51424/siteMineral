@@ -24,11 +24,41 @@ public class Cart {
         return content;
     }
 
-    public double getTotalPrice(){
-        double totalPrice = 0;
-        for (Mineral mineral : content.keySet()){
-            totalPrice += content.get(mineral) * mineral.getPrice();
+    public HashMap<Mineral, Integer> subMineral(Mineral mineral){
+        for (Mineral mineralInCart : content.keySet()){
+            if (mineralInCart.getId() == mineral.getId()){
+                if (content.get(mineralInCart) - 1 == 0){
+                    content.remove(mineralInCart);
+                }
+                else{
+                    content.put(mineralInCart, content.get(mineralInCart) - 1);
+                }
+                return content;
+            }
         }
-        return totalPrice;
+        return content;
+    }
+    public HashMap<Mineral, Integer> removeMineral(Mineral mineral){
+        for (Mineral mineralInCart : content.keySet()){
+            if (mineralInCart.getId() == mineral.getId()){
+                    content.remove(mineralInCart);
+                return content;
+            }
+        }
+        return content;
+    }
+
+    public boolean isInCart(Mineral mineral){
+        for (Mineral mineralInCart : content.keySet()){
+            if (mineralInCart.getId() == mineral.getId()) return true;
+        }
+        return false;
+    }
+
+    public int getValueById(int id){
+        for (Mineral mineralInCart : content.keySet()){
+            if (mineralInCart.getId() == id) return content.get(mineralInCart);
+        }
+        return 0;
     }
 }

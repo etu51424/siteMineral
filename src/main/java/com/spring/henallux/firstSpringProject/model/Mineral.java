@@ -14,6 +14,20 @@ public class Mineral {
     private int categoryId;
     private String imagePath;
 
+    public Mineral(int id, String name, int density, double price, int categoryId, String imagePath){
+        this.id = id;
+        this.name = name;
+        this.density = density;
+        this.price = price;
+        this.categoryId = categoryId;
+        this.imagePath = imagePath;
+    }
+    public Mineral(int id){
+        this.id = id;
+    }
+
+    public Mineral(){}
+
     public int getId() {
         return id;
     }

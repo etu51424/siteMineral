@@ -3,6 +3,7 @@ package com.spring.henallux.firstSpringProject.controller;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDAO;
 import com.spring.henallux.firstSpringProject.dataAccess.dao.UserDataAccess;
 import com.spring.henallux.firstSpringProject.model.User;
+import com.spring.henallux.firstSpringProject.utils.Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.Authentication;
@@ -36,9 +37,9 @@ public class UpdateUserController {
                               @ModelAttribute(value="User") User user,
                               Authentication authentication,
                               final BindingResult errors){
+        User userDetails = (User) authentication.getPrincipal();
+        User updatedUser = getUpdatedUser(user, userDetails, errors);
         if (!errors.hasErrors()){
-            User userDetails = (User) authentication.getPrincipal();
-            User updatedUser = getUpdatedUser(user, userDetails);
             userDAO.updateUser(updatedUser);
             return "redirect:/home";
         }
@@ -48,7 +49,7 @@ public class UpdateUserController {
         }
     }
 
-    public User getUpdatedUser(User user, User userDetails){
+    public User getUpdatedUser(User user, User userDetails, BindingResult errors){
         if (!user.getFirstName().isEmpty()){
             userDetails.setFirstName(user.getFirstName());
         }
@@ -71,7 +72,9 @@ public class UpdateUserController {
             userDetails.setBirthDate(user.getBirthDate());
         }
         if(!user.getPassword().isEmpty()){
-            userDetails.setPassword(user.getPassword());
+            if (Utils.verifyPasswordConfirmation(user.getPassword(), user.getPasswordConfirmation(), errors)){
+                userDetails.setPassword(user.getPassword().trim());
+            }
         }
         return userDetails;
     }

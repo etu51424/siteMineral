@@ -35,6 +35,8 @@ public class User implements UserDetails {
     @NotNull
     @Size(min = 4)
     private String password;
+    @Size(min = 4)
+    private String passwordConfirmation;
     private String authorities;
     private boolean accountNonExpired;
     private boolean accountNonLocked;
@@ -79,6 +81,10 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public String getPasswordConfirmation() {
+        return passwordConfirmation;
     }
 
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -159,6 +165,10 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public void setPasswordConfirmation(String passwordConfirmation) {
+        this.passwordConfirmation = passwordConfirmation;
     }
 
     public void setAccountNonExpired(boolean accountNonExpired) {

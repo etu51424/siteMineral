@@ -4,5 +4,4 @@ import com.spring.henallux.firstSpringProject.dataAccess.entity.OrderMineralEnti
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface OrderMineralRepository extends JpaRepository<OrderMineralEntity, Integer> {
-
 }
