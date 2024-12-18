@@ -98,7 +98,7 @@
             <form:label path="passwordConfirmation">
                 <spring:message code="passwordConfirmation"/>
             </form:label>
-            <form:input path="passwordConfirmation"/>
+            <form:input type="password" path="passwordConfirmation"/>
 
             <span class="error">
                 <form:errors path="passwordConfirmation">
