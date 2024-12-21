@@ -111,9 +111,24 @@ public class CartController {
                 // On doit encoder les url sinon ça ne marche pas
                 StringBuilder urlBuilder = new StringBuilder("https://www.sandbox.paypal.com/cgi-bin/webscr");
                 urlBuilder.append("?business=sb-iivjt14643753%40business.example.com");
-                urlBuilder.append("&cmd=_xclick");
-                urlBuilder.append("&amount=").append(amount);
-                urlBuilder.append("&item_name=caca");
+
+                urlBuilder.append("&cmd=_cart"); // Indique qu'il s'agit d'un panier
+                urlBuilder.append("&upload=1"); // Active le mode panier
+
+                // Ajout des articles
+                int index = 1; // Compteur pour chaque article
+                for (Mineral item : cart.getContent().keySet()) {
+                    urlBuilder.append("&item_name_").append(index).append("=").append(URLEncoder.encode(item.getName(), StandardCharsets.UTF_8));
+                    if (cart.getContent().get(item) >=2){
+                        urlBuilder.append("&amount_").append(index).append("=").append(item.getPrice() * 0.75);
+                    }
+                    else{
+                        urlBuilder.append("&amount_").append(index).append("=").append(item.getPrice());
+                    }
+                    urlBuilder.append("&quantity_").append(index).append("=").append(cart.getContent().get(item));
+                    index++;
+                }
+
                 urlBuilder.append("&currency_code=EUR");
                 urlBuilder.append("&return=http%3A%2F%2Flocalhost%3A8082%2Fmineral%2Fcart%2Fdone");
                 urlBuilder.append("&cancel_return=http%3A%2F%2Flocalhost%3A8082%2Fmineral%2Fcart");
