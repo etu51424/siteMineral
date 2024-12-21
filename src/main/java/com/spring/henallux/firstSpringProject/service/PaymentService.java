@@ -11,7 +11,9 @@ import com.spring.henallux.firstSpringProject.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 @Service
 public class PaymentService {
@@ -23,23 +25,18 @@ public class PaymentService {
         this.orderMineralDAO = orderMineralDAO;
     }
 
-    public boolean proceedToPayment(Cart cart, Authentication authentication) {
+    public OrderMineralEntity proceedToPayment(Cart cart, Authentication authentication) {
         User user = (User) authentication.getPrincipal();
         OrderMineralEntity orderMineralEntity = orderMineralDAO.saveOrderMineral(cart,user);
         for (Mineral mineral : cart.getContent().keySet()){
             orderDetailDAO.saveOrderDetail(mineral, orderMineralEntity, cart.getContent().get(mineral));
         }
-        // ici on fait le paiement via paypal
-        boolean transactionDone = true;
+        return orderMineralEntity;
+    }
 
-        if (transactionDone){
-            cart.getContent().clear();
-            orderMineralEntity.setPaid(true);
-            orderMineralDAO.saveOrderMineral(orderMineralEntity);
-            return true;
-        }
-        else{
-            return false;
-        }
+    public void transactionDone(Cart cart, OrderMineralEntity orderMineralEntity){
+        cart.getContent().clear();
+        orderMineralEntity.setPaid(true);
+        orderMineralDAO.saveOrderMineral(orderMineralEntity);
     }
 }

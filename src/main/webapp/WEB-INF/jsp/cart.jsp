@@ -77,7 +77,7 @@
     </div>
     <p class="row bold"><spring:message code="totalPrice"/> : ${totalPrice}</p>
     <p class="row">
-    <form action="<spring:url value='/cart/send'/>" method="post" style="display:inline;">
+    <form action="<spring:url value='/cart/redirectToPayPal'/>" method="post" style="display:inline;">
         <button type="submit">
             <spring:message code="orderButton"/>
         </button>

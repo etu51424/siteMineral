@@ -17,25 +17,36 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @Controller
 @RequestMapping(value = "/cart")
-@SessionAttributes("cart")
+@SessionAttributes({"cart", "orderMineral"})
 public class CartController {
     private PaymentService paymentService;
     private SalesService salesService;
+
     @Autowired
-    public CartController(PaymentService paymentService, SalesService salesService){
+    public CartController(PaymentService paymentService, SalesService salesService) {
         this.paymentService = paymentService;
         this.salesService = salesService;
     }
+
     @ModelAttribute("cart")
-    public Cart initCart(){
+    public Cart initCart() {
         return new Cart();
     }
+    @ModelAttribute("orderMineral")
+    public OrderMineralEntity initOrderMineral() {
+        return new OrderMineralEntity();
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String cart(@ModelAttribute("cart") Cart cart,
-                       Model model){
+                       Model model) {
         model.addAttribute("totalPrice", salesService.getTotalPrice(cart));
         return "integrated:cart";
     }
@@ -48,9 +59,8 @@ public class CartController {
             @ModelAttribute("itemPrice") double itemPrice,
             @ModelAttribute("itemCategoryId") int itemCategoryId,
             @ModelAttribute("itemImagePath") String itemImagePath,
-            @ModelAttribute("cart") Cart cart)
-    {
-        Mineral item = new Mineral(itemId,itemName,itemDensity,itemPrice,itemCategoryId,itemImagePath);
+            @ModelAttribute("cart") Cart cart) {
+        Mineral item = new Mineral(itemId, itemName, itemDensity, itemPrice, itemCategoryId, itemImagePath);
         cart.addMineral(item);
         return "redirect:/cart";  // Recharge la même page JSP
     }
@@ -63,9 +73,8 @@ public class CartController {
             @ModelAttribute("itemPrice") double itemPrice,
             @ModelAttribute("itemCategoryId") int itemCategoryId,
             @ModelAttribute("itemImagePath") String itemImagePath,
-            @ModelAttribute("cart") Cart cart)
-    {
-        Mineral item = new Mineral(itemId,itemName,itemDensity,itemPrice,itemCategoryId,itemImagePath);
+            @ModelAttribute("cart") Cart cart) {
+        Mineral item = new Mineral(itemId, itemName, itemDensity, itemPrice, itemCategoryId, itemImagePath);
         cart.subMineral(item);
         return "redirect:/cart";  // Recharge la même page JSP
     }
@@ -78,30 +87,47 @@ public class CartController {
             @ModelAttribute("itemPrice") double itemPrice,
             @ModelAttribute("itemCategoryId") int itemCategoryId,
             @ModelAttribute("itemImagePath") String itemImagePath,
-            @ModelAttribute("cart") Cart cart)
-    {
-        Mineral item = new Mineral(itemId,itemName,itemDensity,itemPrice,itemCategoryId,itemImagePath);
+            @ModelAttribute("cart") Cart cart) {
+        Mineral item = new Mineral(itemId, itemName, itemDensity, itemPrice, itemCategoryId, itemImagePath);
         cart.removeMineral(item);
         return "redirect:/cart";  // Recharge la même page JSP
     }
 
-    @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String payCart(@ModelAttribute("cart") Cart cart)
-    {
+    @RequestMapping(value="/redirectToPayPal", method = RequestMethod.POST)
+    public String redirectToPayPal(@ModelAttribute("cart") Cart cart,
+                                   @ModelAttribute("orderMineral") OrderMineralEntity orderMineralEntity,
+                                   Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         // Vérification si un utilisateur est authentifié
-        if (authentication == null || !authentication.isAuthenticated() || authentication.getPrincipal().equals("anonymousUser")){
+        if (authentication == null || !authentication.isAuthenticated() || authentication.getPrincipal().equals("anonymousUser")) {
             return "redirect:/login";
-        }
-        else{
+        } else {
             if (cart.getContent().size() > 0) {
-                paymentService.proceedToPayment(cart, authentication);
-                return "redirect:/cart";
-            }
-            else{
+                orderMineralEntity = paymentService.proceedToPayment(cart, authentication);
+                String amount = URLEncoder.encode("" + salesService.getTotalPrice(cart), StandardCharsets.UTF_8);
+                model.addAttribute("orderMineral", orderMineralEntity);
+
+                // Construire l'URL PayPal avec les paramètres
+                // On doit encoder les url sinon ça ne marche pas
+                StringBuilder urlBuilder = new StringBuilder("https://www.sandbox.paypal.com/cgi-bin/webscr");
+                urlBuilder.append("?business=sb-iivjt14643753%40business.example.com");
+                urlBuilder.append("&cmd=_xclick");
+                urlBuilder.append("&amount=").append(amount);
+                urlBuilder.append("&item_name=caca");
+                urlBuilder.append("&currency_code=EUR");
+                urlBuilder.append("&return=http%3A%2F%2Flocalhost%3A8082%2Fmineral%2Fcart%2Fdone");
+                urlBuilder.append("&cancel_return=http%3A%2F%2Flocalhost%3A8082%2Fmineral%2Fcart");
+
+                return "redirect:" + urlBuilder.toString();
+            } else {
                 return "redirect:/home";
             }
         }
-
+    }
+    @RequestMapping(value = "/done", method = RequestMethod.GET)
+    public String transactionDone(@ModelAttribute("cart") Cart cart,
+                                  @ModelAttribute("orderMineral") OrderMineralEntity orderMineralEntity){
+        paymentService.transactionDone(cart, orderMineralEntity);
+        return "redirect:/home";
     }
 }
