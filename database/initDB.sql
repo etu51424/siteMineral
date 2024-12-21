@@ -132,10 +132,10 @@ INSERT INTO category_translation(language_id, category_id, category_name) VALUES
 
 INSERT INTO mineral (name, density, price, category_id, image_path) VALUES
 -- Éléments natifs
-('Or', 10, 500.00, 1, 'images/or.jpg'),
-('Argent', 10, 450.00, 1, 'images/argent.jpg'),
-('Cuivre', 9, 50.00, 1, 'images/cuivre.jpg'),
-('Soufre', 2, 5.00, 1, 'images/soufre.jpg'),
+('Or', 10, 500.00, 1, 'or.png'),
+('Argent', 10, 450.00, 1, 'argent.png'),
+('Cuivre', 9, 50.00, 1, 'cuivre.png'),
+('Soufre', 2, 5.00, 1, 'soufre.png'),
 -- Sulfures
 ('Galène', 7, 20.00, 2, 'images/galene.jpg'),
 ('Blende', 4, 15.00, 2, 'images/blende.jpg'),
