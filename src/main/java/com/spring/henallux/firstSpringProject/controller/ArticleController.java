@@ -72,4 +72,18 @@ public class ArticleController {
         cart.subMineral(item);
         return "redirect:/article/" + itemId;  // Recharge la même page JSP
     }
+    @RequestMapping(value = "/{mineralId}/set", method = RequestMethod.POST)
+    public String subMineral(
+            @ModelAttribute("itemId") int itemId,
+            @ModelAttribute("itemName") String itemName,
+            @ModelAttribute("itemDensity") int itemDensity,
+            @ModelAttribute("itemPrice") double itemPrice,
+            @ModelAttribute("itemCategoryId") int itemCategoryId,
+            @ModelAttribute("itemImagePath") String itemImagePath,
+            @ModelAttribute("cart") Cart cart,
+            @ModelAttribute("quantity") int quantity) {
+        Mineral item = new Mineral(itemId, itemName, itemDensity, itemPrice, itemCategoryId, itemImagePath);
+        cart.setMineral(item, quantity);
+        return "redirect:/article/" + itemId;  // Recharge la même page JSP
+    }
 }

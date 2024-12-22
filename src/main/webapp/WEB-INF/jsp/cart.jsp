@@ -48,7 +48,18 @@
                         <input type="hidden" name="itemImagePath" value="${item.imagePath}" />
                         <button type="submit" class="panierButton">+</button>
                     </form>
-                    ${cart.getValueById(item.id)}
+                    <form action="<spring:url value='/cart/set'/>" method="post" style="display:inline;">
+                        <input type="hidden" name="itemId" value="${item.id}" />
+                        <input type="hidden" name="itemName" value="${item.name}" />
+                        <input type="hidden" name="itemDensity" value="${item.density}" />
+                        <input type="hidden" name="itemPrice" value="${item.price}" />
+                        <input type="hidden" name="itemCategoryId" value="${item.categoryId}" />
+                        <input type="hidden" name="itemImagePath" value="${item.imagePath}" />
+
+                        <input type="number" name="quantity" value="${cart.getValueById(item.id)}" />
+                        <button type="submit" class="panierButton">mettre à jour</button>
+                    </form>
+
                     <form action="<spring:url value='/cart/sub'/>" method="post" style="display:inline;">
                         <input type="hidden" name="itemId" value="${item.id}" />
                         <input type="hidden" name="itemName" value="${item.name}" />

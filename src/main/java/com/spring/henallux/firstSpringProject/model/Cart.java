@@ -38,6 +38,18 @@ public class Cart {
         }
         return content;
     }
+
+    public HashMap<Mineral, Integer> setMineral(Mineral mineral, int valueSet){
+        if (valueSet > 0) {
+            for (Mineral mineralInCart : content.keySet()) {
+                if (mineralInCart.getId() == mineral.getId()) {
+                    content.put(mineralInCart, valueSet);
+                    return content;
+                }
+            }
+        }
+        return content;
+    }
     public HashMap<Mineral, Integer> removeMineral(Mineral mineral){
         for (Mineral mineralInCart : content.keySet()){
             if (mineralInCart.getId() == mineral.getId()){
