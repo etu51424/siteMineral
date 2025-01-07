@@ -46,10 +46,12 @@ public class MineralDAO implements MineralDataAccess{
             if (optionalMineralEntity.isPresent()){
                 MineralEntity mineralEntity = optionalMineralEntity.get();
                 mineral = providerConverter.mineralEntityToMineralModel(mineralEntity);
+                System.out.println(mineral.getId());
             }
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
+        System.out.println(mineral.getId());
         return mineral;
     }
 }

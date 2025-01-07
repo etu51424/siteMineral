@@ -22,6 +22,15 @@ public class MineralEntity {
     @Column(name="image_path")
     private String imagePath;
 
+    public MineralEntity( int id, String name, int density, double price, CategoryEntity category, String imagePath){
+        this.id = id;
+        this.category = category;
+        this.name = name;
+        this.density = density;
+        this.price = price;
+        this.imagePath = imagePath;
+    }
+
     public MineralEntity(int id){
         this.id = id;
     }

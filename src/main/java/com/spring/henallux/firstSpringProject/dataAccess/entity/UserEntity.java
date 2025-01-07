@@ -38,6 +38,25 @@ public class UserEntity {
     private boolean credentialsNonExpired;
     @Column(name="enabled")
     private boolean enabled;
+    public UserEntity( int id, String username, String lastName, String firstName, String address, String email, String phoneNumber,
+                       Character gender, LocalDate birthDate, String password, String authorities, boolean accountNonExpired,
+                       boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled){
+        this.id = id;
+        this.username = username;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.address = address;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.birthDate = birthDate;
+        this.password = password;
+        this.authorities = authorities;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
+    }
 
     public UserEntity(){
 
