@@ -73,4 +73,8 @@ public class Cart {
         }
         return 0;
     }
+
+    public void setContent(HashMap<Mineral, Integer> content) {
+        this.content = content;
+    }
 }
